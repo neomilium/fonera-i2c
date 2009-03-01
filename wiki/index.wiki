@@ -1,0 +1,18 @@
+#Fonera I2C project index page
+
+= Introduction =
+
+This wiki contain helpful informations about how to modify a La Fonera router to use it to control an I2C bus to manage I/O interface with the real world ;)
+
+
+= Summary =
+
+  * HowTo get acces to La Fonera
+  * HowTo modify La Fonera to replace the software
+  * HowTo compile Open-Wrt
+
+<wiki:comment>
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+</wiki:comment>
