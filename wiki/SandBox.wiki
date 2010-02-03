@@ -1,0 +1,33 @@
+#summary plop's sandbox
+
+= Introduction =
+
+This guide will help you to connect 'La Fonera' to real world.
+
+'La Fonera' is a little router that runs Linux kernel. Like many routers, 'La Fonera' had general purpose inputs/outputs (GPIO) on board. In case of 'La Fonera', not all these GPIO are used and they can be used to create one or two I2C buses.
+
+= Hardware modifications =
+  * Open the case
+  * Locate SW1
+  * Remove caps
+  * Add pull-ups: 1Kohms and 2.2Kohms are both ok (tested with only one I2C device)
+  * (Optionnal) Sold 5x1 tulip connector (2.54 mm / 0.1 inch)
+  * (Optionnal) Add external connector
+
+= Software =
+  * Install OpenWrt 8.09.x
+  * Install kernel modules that allow to use GPIO as I2C bus
+  * Configure module loading options
+   * Create a new file /etc/modules/xx-kmod-i2c-gpio-custom
+   * Add yyyyyyyy
+   * Reboot in order to load kmod-i2c-gpio-custom before kmod-i2c-gpio
+  * Install i2c-tools
+  * Probe I2C devices (i2cdetect)
+  * Test using i2cset/i2cget (e.g. with PCF 8574)
+= ToDo =
+== HW ==
+  * Attempt to drive I2C devices without removing caps
+  * Attempt to drive I2C devices with bottom resistors removed but without pull-ups.
+  * Test to driver multiple I2C device
+== SW ==
+  * Write a little C sample to drive PCF 8574.
