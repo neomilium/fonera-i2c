@@ -38,13 +38,29 @@ As you can see on picture, 5x1 tulip connector (2.54 mm / 0.1 inch) is just perf
   * Install OpenWrt 8.09.x
   * Install kernel modules that allow to use GPIO as I2C bus
   * Configure module loading options
-   * Create a new file /etc/modules/xx-kmod-i2c-gpio-custom
-   * Add yyyyyyyy
+   * Create a new file /etc/modules.d/58-i2c-gpio-custom
+In this file, you must put options to i2c-gpio-custom module loading.
+In example, this content allow i2c-gpio-custom module loading in order to create I2C device interface `/dev/i2c-0` using GPIO1 as SDA and GPIO7 as SCL.
+{{{
+i2c-gpio-custom bus0=0,1,7
+}}}
+
    * Reboot in order to load kmod-i2c-gpio-custom before kmod-i2c-gpio
+Atfer reboot, `dmesg` command should say something like that:
+{{{
+i2c /dev entries driver
+Custom GPIO-based I2C driver version 0.1.1
+i2c-gpio i2c-gpio.0: using pins 1 (SDA) and 7 (SCL)
+}}}
   * Install i2c-tools
+{{{
+opkg update && opkg install i2c-tools
+}}}
+
   * Probe I2C devices (i2cdetect)
+
   * Test using i2cset/i2cget (e.g. with PCF 8574)
-= ToDo =
+= To-do list =
 == HW ==
   * Attempt to drive I2C devices without removing caps
   * Attempt to drive I2C devices with bottom resistors removed but without pull-ups.
