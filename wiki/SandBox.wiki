@@ -8,10 +8,30 @@ This guide will help you to connect 'La Fonera' to real world.
 
 = Hardware modifications =
   * Open the case
+http://fonera-i2c.googlecode.com/files/FON2100_case_bottom.jpg
+
+Remove the two rubber feet on the opposite site to the antenna jack and unscrew the revealed screws.
+
   * Locate SW1
+http://fonera-i2c.googlecode.com/files/FON2100_pcb_top_small.jpg
+
+On this picture, SW1 is located on top-right corner and already have a tulip connector sold on.
+
   * Remove caps
-  * Add pull-ups: 1Kohms and 2.2Kohms are both ok (tested with only one I2C device)
-  * (Optionnal) Sold 5x1 tulip connector (2.54 mm / 0.1 inch)
+On these GPIO there is debouncing RC, caps are on top side of PCB, resistors are located on bottom side.
+To prevent this RC to filter data (SDA) or clock (SCL) I2C signals, its recommended to remove caps.
+
+  * Add pull-ups resistors
+To works correctly, 2.2KOhms resistor pull-up need to be placed on both signal lines.
+Note: I made some tests with only one I2C device on bus, 1KOhms and 2.2KOhms but 10KOhms doesn't work, just like if these pull-ups are not present.
+
+  * (Optionnal) Sold internal connector
+You can add a cheap "easy-to-plug" connector on GPIOs in order to be able to plug/unplug I2C device without dismantle all box each time (i.e. no need to remove PCB from box).
+
+http://fonera-i2c.googlecode.com/files/FON2100_pcb_internal_gpio_connector_small.jpg
+
+As you can see on picture, 5x1 tulip connector (2.54 mm / 0.1 inch) is just perfect if you remove center pin to prevent from short circuits. Even PCB doesn't fit with 2.54 mm / 0.1 inch, this 5x1 connector can be sold on this 6x1 pads on PCB. To ease soldering, you should clean these pads (metalic vias) before attempt to put tulip connector.
+
   * (Optionnal) Add external connector
 
 = Software =
