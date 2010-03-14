@@ -1,10 +1,10 @@
-#summary plop's sandbox
+#summary Hacking guide to add I2C buses to "La Fonera" 
 
 = Introduction =
 
-This guide will help you to connect 'La Fonera' to real world.
+This guide will help you to connect _La Fonera_ to real world.
 
-'La Fonera' is a little router that runs Linux kernel. Like many routers, 'La Fonera' had general purpose inputs/outputs (GPIO) on board. In case of 'La Fonera', not all these GPIO are used and they can be used to create one or two I2C buses.
+_La Fonera_ is a little router that runs Linux kernel. Like many routers, _La Fonera_ had general purpose inputs/outputs (GPIO) on board. In case of _La Fonera_, not all these GPIO are used and they can be used to create one or two I2C buses.
 
 = Hardware modifications =
   * Open the case
